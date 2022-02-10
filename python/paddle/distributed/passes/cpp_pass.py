@@ -80,3 +80,16 @@ class FuseOptimizerPass(CPPPassWrapper):
 
     def _type(self):
         return PassType.FUSION_OPT
+
+
+@register_pass("sync_batch_norm")
+class SyncBatchNormPass(CPPPassWrapper):
+    def __init__(self):
+        super(SyncBatchNormPass, self).__init__()
+
+    @property
+    def cpp_name(self):
+        return "sync_batch_norm_pass"
+
+    def _type(self):
+        return PassType.PARALLEL_OPT
